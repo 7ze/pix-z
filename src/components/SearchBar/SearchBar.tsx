@@ -1,20 +1,30 @@
 import React, { Component, ChangeEvent } from 'react';
 import './SearchBar.sass';
 
-export class SearchBar extends Component {
-  state = {
+interface State {
+  term: string;
+}
+
+interface Props {
+  onSubmit: (term: string) => void;
+}
+
+export class SearchBar extends Component<Props, State> {
+  // * declaring State as a readonly type
+  state: Readonly<State> = {
     term: '',
   };
 
   onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      userInput: event.target.value,
+      term: event.target.value,
     });
   };
 
   onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(this.state.term);
+    const { onSubmit } = this.props;
+    onSubmit(this.state.term);
   };
 
   render() {
