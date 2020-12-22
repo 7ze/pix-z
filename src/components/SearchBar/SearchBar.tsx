@@ -3,7 +3,7 @@ import './SearchBar.sass';
 
 export class SearchBar extends Component {
   state = {
-    userInput: '',
+    term: '',
   };
 
   onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +14,7 @@ export class SearchBar extends Component {
 
   onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(this.state.userInput);
+    console.log(this.state.term);
   };
 
   render() {
@@ -27,7 +27,7 @@ export class SearchBar extends Component {
               type="text"
               placeholder="Search"
               onChange={this.onInputChange}
-              value={this.state.userInput}
+              value={this.state.term}
             />
             <i className="search icon"></i>
           </div>
