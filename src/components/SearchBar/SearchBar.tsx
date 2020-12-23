@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import * as React from 'react';
 import './SearchBar.sass';
 
 interface State {
@@ -9,13 +9,13 @@ interface Props {
   onSubmit: (term: string) => void;
 }
 
-export class SearchBar extends Component<Props, State> {
+export class SearchBar extends React.Component<Props, State> {
   // * declaring State as a readonly type
   state: Readonly<State> = {
     term: '',
   };
 
-  onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       term: event.target.value,
     });
