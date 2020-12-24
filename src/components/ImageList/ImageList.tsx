@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ImageCard } from '../ImageCard';
 import './ImageList.sass';
 
 interface Props {
@@ -6,13 +7,6 @@ interface Props {
 }
 
 export const ImageList: React.FC<Props> = ({ images }) => {
-  const imageList = images.map(({ description, id, urls }) => (
-    <img
-      src={urls.regular}
-      alt={description}
-      key={id}
-      className="ui fluid image"
-    />
-  ));
-  return <div className="image-list ui medium images">{imageList}</div>;
+  const imageList = images.map((image) => <ImageCard image={image} />);
+  return <div className="image-list">{imageList}</div>;
 };
