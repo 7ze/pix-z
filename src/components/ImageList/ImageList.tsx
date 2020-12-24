@@ -6,11 +6,11 @@ interface Props {
 }
 
 export const ImageList: React.FC<Props> = ({ images }) => {
-  const imageList = images.map((image) => (
+  const imageList = images.map(({ description, id, urls }) => (
     <img
-      src={image.urls.regular}
-      alt=""
-      key={image.id}
+      src={urls.regular}
+      alt={description}
+      key={id}
       className="ui fluid image"
     />
   ));
