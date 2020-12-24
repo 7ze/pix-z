@@ -7,6 +7,8 @@ interface Props {
 }
 
 export const ImageList: React.FC<Props> = ({ images }) => {
-  const imageList = images.map((image) => <ImageCard image={image} />);
+  const imageList = images.map((image) => (
+    <ImageCard key={image.id} image={image} />
+  ));
   return <div className="image-list">{imageList}</div>;
 };
