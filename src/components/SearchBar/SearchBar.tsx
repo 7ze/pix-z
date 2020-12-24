@@ -6,12 +6,11 @@ interface State {
 }
 
 interface Props {
-  onSubmit: (term: string) => void;
+  onSubmit: (url: string, term: string) => void;
 }
 
 export class SearchBar extends React.Component<Props, State> {
-  // * declaring State as a readonly type
-  state: Readonly<State> = {
+  state = {
     term: '',
   };
 
@@ -24,7 +23,7 @@ export class SearchBar extends React.Component<Props, State> {
   onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { onSubmit } = this.props;
-    onSubmit(this.state.term);
+    onSubmit('search/photos', this.state.term);
   };
 
   render() {
